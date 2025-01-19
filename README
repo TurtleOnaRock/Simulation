@@ -8,18 +8,18 @@ Tree, Rock and Grass are objects that simulate nature and make the world a bit i
 2 creatures: Herbivore and Predator.
 Herbivore is a creature that like to eat grass, while Predators use Herbivore as a food.
 
-Speed consept:
+Speed concept:
 All creatures can move with different speed. 
 Herbover makes one move each turn while Predator needs 2 turns for one step.
 
-MoveType consept:
+MoveType concept:
 Simulation emulates two types of moving.
 4-direction move and 8-direction move.
 4-direction move means that creature can move to "up", "down", "left", right".
 8-direction move means 4-direction move + diagonal moves.
 In this implementation Herbivore use 4-direction moveType, while Predator use 8-direction moveType.
 
-Eating and Hp consept:
+Eating and Hp concept:
 At the end of each step creature check heighboring space following MoveType consept trying to find food. If objects that they recognize as a food close, they bite it. 
 Grass desapperis immediatle. 
 Herbivore has 3 hp that can be recovered 1 by 1 with eating Grass.
@@ -28,7 +28,7 @@ Predators has 1 hp that nobody and nothing can take away. They are looking for H
 Loop:
 To make the Simulation endless when Grass going down 3 pieces, new Grass grow up to 10 pieces. Herbivores also appear when the world has not any food for Predators.
 
-Control consept:
+Control concept:
 User can stop the Simulation with entering 'P' or 'p'.
 Continue the Simulation with entering 'C' or 'c'.
 Quit the Simulation with entering 'Q' or 'q'.
