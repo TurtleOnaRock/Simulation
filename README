@@ -1,4 +1,4 @@
-Simulation is a part of roadmap to become a beckend developer made by ...
+Simulation is a part of roadmap to become a beckend developer made by https://github.com/zhukovsd .
 
 Simulation is a mini world with some type of objects and creatures.
 
@@ -37,6 +37,7 @@ Just for fun:
 Simulation has one Turtle with speed 5 (5 turn for 1 step) and 4-directioin moveType that like to eat fish and one Fish. It just strolling through the world and disturb others creature hunting on their food.
 
 Notes:
+Some problems can be appers during rendering world with IDEA's inside terminal. I advise to execute programm in usual terminal.
 You can make your own changes in the programm to controll amount of creature, speed and world size but it would be yours responsobility if:
 1) The world be too big
 2) Total amount of creatures would be more than world capacity
