@@ -1,16 +1,18 @@
-package Actions;
+package actions;
 
-import Enviroment.Coordinate;
-import Enviroment.World;
-import objects.Entity;
-import objects.Movable.Creature;
+import Utils.BFSSearcher;
+import Utils.BoardUtils;
+import enviroment.Board;
+import enviroment.Coordinate;
+import entitys.Entity;
+import entitys.creatures.Creature;
 
 import java.util.Set;
 
 public class BiteAction implements Action {
 
-    public void perform (World world){
-        Set<Coordinate> creaturesPosition = world.getCreaturesPosition();
+    public void perform (Board<Entity> world){
+        Set<Coordinate> creaturesPosition = BoardUtils.getCreaturesPosition(world);
         Creature eater;
         Coordinate foodPosition;
         BFSSearcher searcher;
@@ -19,8 +21,8 @@ public class BiteAction implements Action {
             if(world.coordinateIsEmpty(creaturePosition)){
                 continue;
             }
-            eater = (Creature) world.getEntity(creaturePosition);
-            searcher = new BFSSearcher(world, creaturePosition);
+            eater = (Creature) world.get(creaturePosition);
+            searcher = new BFSSearcher(world, creaturePosition, eater.getGoal(), eater.getMoveType());
             foodPosition = searcher.findGoalAround();
             if(foodPosition.equals(creaturePosition)){                  //there is no Goal around
                 continue;
@@ -29,16 +31,16 @@ public class BiteAction implements Action {
         }
     }
 
-    private void bite(World world, Creature eater, Coordinate foodPosition){
-        Entity food = world.getEntity(foodPosition);
+    private void bite(Board<Entity> world, Creature eater, Coordinate foodPosition){
+        Entity food = world.get(foodPosition);
         if(food instanceof Creature){
             Creature meatFood = (Creature) food;
             meatFood.hpDown();
             if(meatFood.getHp() <= 0){
-                world.removeEntity(foodPosition);
+                world.remove(foodPosition);
             }
         } else {
-            world.removeEntity(foodPosition);
+            world.remove(foodPosition);
         }
         if(eater.getHp() < eater.getHpLimit()) {
             eater.hpUp();

@@ -1,16 +1,16 @@
-package objects.Movable;
+package entitys.creatures;
 
-import objects.EntityType;
+import entitys.Fish;
 
-public class Herbivore extends Creature{
+public class Turtle extends Creature {
 
-    public static final int DEFAULT_HP = 3;
-    public static final int DEFAULT_HP_LIMIT = 3;
-    public static final EntityType DEFAULT_GOAL = EntityType.GRASS;
-    public static final int DEFAULT_SPEED = 1;
+    public static final int DEFAULT_HP = 100;
+    public static final int DEFAULT_HP_LIMIT = 1000;
+    public static final Class DEFAULT_GOAL = Fish.class;
+    public static final int DEFAULT_SPEED = 5;
     public static final MoveType DEFAULT_MOVE_TYPE = MoveType.FOUR_DIRECTIONS;
 
-    public Herbivore (){
+    public Turtle (){
         super(DEFAULT_HP,
                 DEFAULT_HP_LIMIT,
                 DEFAULT_GOAL,

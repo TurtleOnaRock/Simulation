@@ -1,6 +1,4 @@
-package objects.Inmovable;
-
-import objects.Entity;
+package entitys;
 
 public final class Fish extends Entity {
 

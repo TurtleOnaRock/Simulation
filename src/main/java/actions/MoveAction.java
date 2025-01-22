@@ -1,30 +1,38 @@
-package Actions;
+package actions;
 
-import Enviroment.Coordinate;
-import Enviroment.World;
-import objects.*;
-import objects.Movable.Creature;
+import Utils.BFSSearcher;
+import Utils.BoardUtils;
+import enviroment.Board;
+import enviroment.Coordinate;
+import enviroment.TurnCounter;
+import entitys.*;
+import entitys.creatures.Creature;
 
 import java.util.*;
 
 public class MoveAction implements Action{
 
     public static final String MOVE_EXCEPTION_MSG = "ERROR: Trying to move into busy coordinate.";
+    private TurnCounter turnCounter;
 
-    public void perform (World world) {
-        Set<Coordinate> creaturesPosition = world.getCreaturesPosition();
+    public MoveAction(TurnCounter turnCounter){
+        this.turnCounter = turnCounter;
+    }
+
+    public void perform (Board<Entity> world) {
+        Set<Coordinate> creaturesPosition = BoardUtils.getCreaturesPosition(world);
         BFSSearcher pathFinder;
         Deque<Coordinate> pathToGoal;
         Coordinate moveTo;
         Creature creature;
-        int time = world.getTime();
+        int time = this.turnCounter.getTurn();
 
         for(Coordinate moveFrom : creaturesPosition){
-            creature = (Creature) world.getEntity(moveFrom);
+            creature = (Creature) world.get(moveFrom);
             if(time % creature.getSpeed() != 0){
                 continue;
             }
-            pathFinder = new BFSSearcher(world, moveFrom);
+            pathFinder = new BFSSearcher(world, moveFrom, creature.getGoal(), creature.getMoveType());
             pathToGoal = pathFinder.findPathToGoal();
             if(pathToGoal.size() == 1 ){                  //no goal or goal is close and ready to be bitten
                 continue;
@@ -38,7 +46,7 @@ public class MoveAction implements Action{
         }
     }
 
-    private void makeMove(World world, Coordinate from, Coordinate to) throws MoveException{
+    private void makeMove(Board<Entity> world, Coordinate from, Coordinate to) throws MoveException{
         if(to.equals(from)){
             return;
         }
@@ -46,8 +54,8 @@ public class MoveAction implements Action{
             throw new MoveException(MOVE_EXCEPTION_MSG);
         }
         Entity entity;
-        entity = world.getEntity(from);
-        world.putEntity(to, entity);
-        world.removeEntity(from);
+        entity = world.get(from);
+        world.put(to, entity);
+        world.remove(from);
     }
 }

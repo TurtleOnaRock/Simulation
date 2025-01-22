@@ -1,36 +1,40 @@
-import Actions.Action;
-import Enviroment.World;
-import Enviroment.Renderer;
+import actions.Action;
+import entitys.Entity;
+import enviroment.Board;
+import enviroment.TurnCounter;
+import Utils.Renderer;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class Simulation {
 
-    public static final String CONTROL_PANEL = "Press 'P' to pause, Press 'C' to continue, Press 'Q' to quit simulation.";
+    public static final String ENTER_MSG = "Enter '";
+    public static final String CONTROL_PANEL_PAUSE = "' to pause Simulation.";
+    public static final String CONTROL_PANEL_CONTINUE = "' to continue Simulation.";
+    public static final String CONTROL_PANEL_QUIT = "' to quit Simulation.";
     public static final String COUNTER_MSG = "Turn: ";
     public static final String END_MSG = "Simulation successfully completed!";
 
     public static final long SLEEP_DURATION = 500;
 
-    private final World world;
-    private final List<Action> turnAction;
+    private final Board<Entity> world;
+    private final List<Action> turnActions;
     private final Renderer renderer;
-    private final Scanner scanner;
+    private final TurnCounter turnCounter;
     private boolean statePause;
     private boolean stateRun;
 
-    public Simulation(World world, List<Action> actions, Renderer renderer) {
+    public Simulation(Board<Entity> world, List<Action> actions, Renderer renderer, TurnCounter turnCounter) {
         this.world = world;
-        this.turnAction = actions;
+        this.turnActions = actions;
         this.renderer = renderer;
-        this.scanner = new Scanner(System.in);
         this.statePause = false;
         this.stateRun = true;
+        this.turnCounter = turnCounter;
     }
 
     public void start() {
-        while (running()) {
+        while (stateRun) {
             renderWorld();
             printControlPanel();
             do {
@@ -46,28 +50,26 @@ public class Simulation {
     }
 
     public void nextTurn() {
-        for (Action action : turnAction) {
+        for (Action action : turnActions) {
             action.perform(this.world);
         }
-        this.world.timeUp();
+        this.turnCounter.up();
     }
 
     public void renderWorld() {
         this.renderer.clean();
         this.renderer.showMap(this.world);
-        System.out.println(COUNTER_MSG + this.world.getTime());
+        System.out.println(COUNTER_MSG + this.turnCounter.getTurn());
     }
 
     public void printControlPanel() {
-        System.out.println(CONTROL_PANEL);
+        System.out.println(ENTER_MSG + SimulationCommands.PAUSE_CHAR + CONTROL_PANEL_PAUSE);
+        System.out.println(ENTER_MSG + SimulationCommands.GOINGON_CHAR + CONTROL_PANEL_CONTINUE);
+        System.out.println(ENTER_MSG + SimulationCommands.QUIT_CHAR + CONTROL_PANEL_QUIT);
     }
 
     public void setPause(boolean status) {
        this.statePause = status;
-    }
-
-    private boolean running(){
-        return stateRun && world.movableEntitysExists();
     }
 
     public void endSimulation(){

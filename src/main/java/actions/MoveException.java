@@ -1,8 +1,6 @@
-package Actions;
+package actions;
 
 public class MoveException extends RuntimeException {
-
-    public MoveException() {}
 
     public MoveException(String message) {
         super(message);

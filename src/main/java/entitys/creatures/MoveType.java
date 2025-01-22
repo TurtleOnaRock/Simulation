@@ -1,4 +1,4 @@
-package objects.Movable;
+package entitys.creatures;
 
 public enum MoveType {
     FOUR_DIRECTIONS,

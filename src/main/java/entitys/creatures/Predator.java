@@ -1,12 +1,10 @@
-package objects.Movable;
-
-import objects.EntityType;
+package entitys.creatures;
 
 public class Predator extends Creature{
 
     public static final int DEFAULT_HP = 1;
     public static final int DEFAULT_HP_LIMIT = 5;
-    public static final EntityType DEFAULT_GOAL = EntityType.HERBIVORE;
+    public static final Class DEFAULT_GOAL = Herbivore.class;
     public static final int DEFAULT_SPEED = 2;
     public static final MoveType DEFAULT_MOVE_TYPE = MoveType.EIGHT_DIRECTIONS;
 
