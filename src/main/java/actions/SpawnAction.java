@@ -5,6 +5,7 @@ import enviroment.Coordinate;
 import entitys.*;
 import enviroment.Board;
 
+import java.util.Random;
 import java.util.function.Supplier;
 
 public class SpawnAction implements Action{
@@ -20,16 +21,43 @@ public class SpawnAction implements Action{
     }
 
     public void perform(Board<Entity> world) {
-        int amount = BoardUtils.amountOf(world, supplier.get().getClass());
+        int amount = amountOf(world, supplier.get().getClass());
         Entity entity;
         Coordinate coordinate;
         if(amount < this.minAmount){
             for(int i = amount; i < this.maxAmount; i++ ){
                 entity = supplier.get();
-                coordinate = BoardUtils.getRandomEmptyCoordinate(world);
+                coordinate = getRandomEmptyCoordinate(world);
                 world.put(coordinate, entity);
             }
         }
+    }
+
+    private int amountOf(Board<Entity> board, Class clazz) {
+        int amount = 0;
+        Entity entity;
+        for (Coordinate entityPosition : board.getPositions()) {
+            entity = board.get(entityPosition);
+            if (entity.getClass() == clazz) {
+                amount++;
+            }
+        }
+        return amount;
+    }
+
+    private Coordinate getRandomEmptyCoordinate(Board<Entity> world){
+        Random random = new Random(System.currentTimeMillis());
+        int maxWidht = world.getWidth();
+        int maxHeight = world.getHeight();
+        Coordinate randomCoordinate;
+        do{
+            randomCoordinate = new Coordinate(random.nextInt(maxWidht), random.nextInt(maxHeight));
+        } while (!validEmptyCoordinate(world, randomCoordinate));
+        return randomCoordinate;
+    }
+
+    private boolean validEmptyCoordinate(Board<Entity> world, Coordinate coordinate){
+        return BoardUtils.isValidCoordinate(world, coordinate) && world.coordinateIsEmpty(coordinate);
     }
 
 }

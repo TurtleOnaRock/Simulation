@@ -20,7 +20,7 @@ Simulation emulates two types of moving.
 In this implementation Herbivore use 4-direction moveType, while Predator use 8-direction moveType.
 
 Eating and Hp concept:
-At the end of each step creature check heighboring space following MoveType consept trying to find food. If objects that they recognize as a food close, they bite it. 
+At the end of each step creature check heighboring space following MoveType consept trying to find food. If objects that they recognize as a food close, they bite it.
 Grass desapperis immediatle. 
 Herbivore has 3 hp that can be recovered 1 by 1 with eating Grass.
 Predators has 1 hp that nobody and nothing can take away. They are looking for Herbivores and kill them due instinct. Predators don't move each turn but they can bite close Herbivore each turn with no moving.
