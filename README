@@ -1,9 +1,9 @@
 Simulation is a part of roadmap to become a beckend developer made by https://github.com/zhukovsd .
 
-Simulation is a mini world with some type of objects and creatures.
+Simulation is a mini world with some type of entitys and creatures.
 
-3 objects: Tree, Rock and Grass.
-Tree, Rock and Grass are objects that simulate nature and make the world a bit interesting than witout them. Grass is also a type of food for some creatures.
+3 entitys: Tree, Rock and Grass.
+Tree, Rock and Grass are entitys that simulate nature and make the world a bit interesting than witout them. Grass is also a type of food for some creatures.
 
 2 creatures: Herbivore and Predator.
 Herbivore is a creature that like to eat grass, while Predators use Herbivore as a food.
