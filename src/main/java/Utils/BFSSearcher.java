@@ -1,24 +1,23 @@
 package Utils;
 
-import entitys.Entity;
 import entitys.creatures.MoveType;
 import enviroment.Coordinate;
 import enviroment.Board;
 
 import java.util.*;
 
-public class BFSSearcher {
+public class BFSSearcher<T> {
 
     public static final Coordinate INVALUED_COORDINATE = new Coordinate(-1, -1);
 
-    private final Board<Entity> world;
+    private final Board<T> world;
     private final Coordinate searchFrom;
     private final Class target;
     private final MoveType moveType;
     private Coordinate locationOfTarget;
     private Coordinate point;
 
-    public BFSSearcher(Board<Entity> world, Coordinate searchFrom, Class target, MoveType moveType){
+    public BFSSearcher(Board<T> world, Coordinate searchFrom, Class target, MoveType moveType){
         this.world = world;
         this.searchFrom = searchFrom;
         this.target = target;

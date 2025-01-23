@@ -2,7 +2,7 @@ package entitys.creatures;
 
 public class Predator extends Creature{
 
-    public static final int DEFAULT_HP = 1;
+    public static final int DEFAULT_HP = 3;
     public static final int DEFAULT_HP_LIMIT = 5;
     public static final Class DEFAULT_GOAL = Herbivore.class;
     public static final int DEFAULT_SPEED = 2;

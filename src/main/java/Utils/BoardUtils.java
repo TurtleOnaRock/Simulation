@@ -22,7 +22,7 @@ public class BoardUtils {
         return creatures;
     }
 
-    public static boolean isValidCoordinate(Board<Entity> board, Coordinate coordinate) {
+    public static <T> boolean isValidCoordinate(Board<T> board, Coordinate coordinate) {
         if( (coordinate.getWidth() > board.getWidth()) || (coordinate.getHeight() > board.getHeight()) ){
             return false;
         }

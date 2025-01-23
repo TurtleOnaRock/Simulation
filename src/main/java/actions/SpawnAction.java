@@ -9,15 +9,24 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class SpawnAction implements Action{
+
+    private static final int DEFAULT_MIN_AMOUNT = 1;
+
     private final int minAmount;
     private final int maxAmount;
     private final Supplier<Entity> supplier;
 
 
-    public SpawnAction (Supplier<Entity> supplier, int min, int max){
-        this.minAmount = min;
-        this.maxAmount = max;
+    public SpawnAction (Supplier<Entity> supplier, int ... amount) throws WrongAmountOfArgumentsException {
         this.supplier = supplier;
+        this.maxAmount = amount[0];
+        if(amount.length == 1){
+            this.minAmount = DEFAULT_MIN_AMOUNT;
+        } else if(amount.length == 2){
+            this.minAmount = amount[1];
+        } else {
+            throw new WrongAmountOfArgumentsException();
+        }
     }
 
     public void perform(Board<Entity> world) {

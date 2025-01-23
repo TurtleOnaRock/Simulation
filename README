@@ -1,16 +1,16 @@
-Simulation is a part of roadmap to become a beckend developer made by https://github.com/zhukovsd .
+Simulation is a part of roadmap to become a backend developer made by https://github.com/zhukovsd .
 
-Simulation is a mini world with some type of entitys and creatures.
+Simulation is a mini world with some type of objects and creatures.
 
-3 entitys: Tree, Rock and Grass.
-Tree, Rock and Grass are entitys that simulate nature and make the world a bit interesting than witout them. Grass is also a type of food for some creatures.
+3 object: Tree, Rock and Grass.
+Tree, Rock and Grass are objects that simulate nature and make the world a bit interesting than without them. Grass is also a type of food for some creatures.
 
 2 creatures: Herbivore and Predator.
 Herbivore is a creature that like to eat grass, while Predators use Herbivore as a food.
 
 Speed concept:
 All creatures can move with different speed. 
-Herbover makes one move each turn while Predator needs 2 turns for one step.
+Herbivore makes one move each turn while Predator needs 2 turns for one step.
 
 MoveType concept:
 Simulation emulates two types of moving.
@@ -20,10 +20,13 @@ Simulation emulates two types of moving.
 In this implementation Herbivore use 4-direction moveType, while Predator use 8-direction moveType.
 
 Eating and Hp concept:
-At the end of each step creature check heighboring space following MoveType consept trying to find food. If objects that they recognize as a food close, they bite it.
-Grass desapperis immediatle. 
+At the end of each step creature check neighboring space following MoveType concept trying to find food.
+If objects that they recognize as a food close, they bite it.
+Grass disappear immediately.
 Herbivore has 3 hp that can be recovered 1 by 1 with eating Grass.
-Predators has 1 hp that nobody and nothing can take away. They are looking for Herbivores and kill them due instinct. Predators don't move each turn but they can bite close Herbivore each turn with no moving.
+Predators has 3 hp that nobody and nothing can take away. They are looking for Herbivores and kill them due instinct.
+Predators don't move each turn but they can bite close Herbivore each turn with no moving.
+If creature has 2 hp, it is marked blue background. If creature has 1 hp and only one step to death background became red.
 
 Loop:
 To make the Simulation endless when Grass going down 3 pieces, new Grass grow up to 10 pieces. Herbivores also appear when the world has not any food for Predators.
@@ -34,17 +37,19 @@ Continue the Simulation with entering 'C' or 'c'.
 Quit the Simulation with entering 'Q' or 'q'.
 
 Just for fun:
-Simulation has one Turtle with speed 5 (5 turn for 1 step) and 4-directioin moveType that like to eat fish and one Fish. It just strolling through the world and disturb others creature hunting on their food.
+Simulation has one Turtle with speed 5 (5 turn for 1 step) and 4-direction moveType. It like to eat fish.
+It is just strolling through the world and disturbing others creature hunting on their food.
 
 Notes:
-Some problems can be appers during rendering world with IDEA's inside terminal. I advise to execute programm in usual terminal.
-You can make your own changes in the programm to controll amount of creature, speed and world size but it would be yours responsobility if:
+Some problems can  appears during rendering world with IDEA's inside terminal. I advise to execute program in usual terminal.
+You can make your own changes in the program to control amount of objects, speed of creatures and world size.
+But it would be yours responsibility if:
 1) The world be too big
 2) Total amount of creatures would be more than world capacity
-3) In the world new food don't appers, you should define new condition for end Simulation.
+3) In the world new food don't appear, you should define new condition to finish Simulation.
 
 The Simulation has some problems as:
 1) Some times controls entering doesn't work. I have no idea why.
-2) I am interesting in oppinion about the way of designing BFSSercher.Class
+2) I am interesting in opinion about the way of designing BFSSearcher.Class
 
 
