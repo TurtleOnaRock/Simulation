@@ -20,16 +20,6 @@ public class Renderer {
     public static final String TURTLE_EMOJI = "🐢";
     public static final String FISH_EMOJI = "🐟";
 
-    /*public static final String ROCK_EMOJI = new String(Character.toChars(0x1F94C));
-    public static final String TREE_EMOJI = "🌲";;
-    public static final String GRASS_EMOJI = new String(Character.toChars(0x1F331));
-    public static final String HERBIVORE_EMOJI = new String(Character.toChars(0x1F407));
-    public static final String PREDATOR_EMOJI = new String(Character.toChars(0x1F43A));
-    public static final String SPACE_EMOJI = new String(Character.toChars(0x2B1B));
-    public static final String TURTLE_EMOJI = new String(Character.toChars(0x1F422));
-    public static final String FISH_EMOJI = new String(Character.toChars(0x1F41F));
-     */
-
     public static final String RED_BACKGROUND = "\u001B[41m";
     public static final String BLUE_BACKGROUND = "\u001B[44m";
     public static final String DEFAULT_BACKGROUND = "\u001B[0m";
