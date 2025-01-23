@@ -2,7 +2,7 @@ import actions.Action;
 import entitys.Entity;
 import enviroment.Board;
 import enviroment.TurnCounter;
-import Utils.Renderer;
+import utils.Renderer;
 
 import java.util.List;
 

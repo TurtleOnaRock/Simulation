@@ -1,7 +1,7 @@
 package actions;
 
-import Utils.BFSSearcher;
-import Utils.BoardUtils;
+import utils.BFSSearcher;
+import utils.BoardUtils;
 import enviroment.Board;
 import enviroment.Coordinate;
 import entitys.Entity;

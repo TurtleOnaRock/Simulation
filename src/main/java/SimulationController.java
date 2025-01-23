@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SimulationControler implements Runnable{
+public class SimulationController implements Runnable{
 
     public static final int ONE_CHAR_STRING = 1;
 
@@ -10,14 +10,14 @@ public class SimulationControler implements Runnable{
     private final Simulation simulation;
     private final Scanner scanner;
 
-    public SimulationControler(Simulation simulation){
+    public SimulationController(Simulation simulation){
         this.simulation = simulation;
         this.scanner = new Scanner(System.in);
     }
 
     @Override
     public void run() {
-        char ch = '!';
+        char ch;
         while(this.simulation.getStateRun()) {
             ch = getChar();
             switch (ch) {
@@ -30,11 +30,11 @@ public class SimulationControler implements Runnable{
     }
 
     private char getChar(){
-        String input = "";
+        String input;
         do {
             input = this.scanner.nextLine();
             if(input.length() > ONE_CHAR_STRING){
-                System.out.println("WRONG_COMMAND_FORMAT");
+                System.out.println(WRONG_COMMAND_FORMAT);
             }
         }while(input.length() != ONE_CHAR_STRING);
         return input.toUpperCase().charAt(0);

@@ -1,4 +1,4 @@
-import Utils.Renderer;
+import utils.Renderer;
 import actions.*;
 import entitys.Entity;
 import entitys.*;
@@ -62,7 +62,7 @@ public class Main {
         Renderer renderer = new Renderer();
 
         Simulation simulation = new Simulation(world, actions, renderer, turnCounter);
-        Thread controller = new Thread(new SimulationControler(simulation));
+        Thread controller = new Thread(new SimulationController(simulation));
 
         controller.start();
         simulation.start();

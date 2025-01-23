@@ -19,7 +19,7 @@ public class Board<T> {
     public Board(int width, int height) {
         this.width = width;
         this.height = height;
-        this.things = new HashMap<Coordinate, T>();
+        this.things = new HashMap<>();
     }
 
     public int getWidth() {

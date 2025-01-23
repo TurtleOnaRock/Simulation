@@ -1,6 +1,6 @@
 package actions;
 
-import Utils.BoardUtils;
+import utils.BoardUtils;
 import enviroment.Coordinate;
 import entitys.*;
 import enviroment.Board;
